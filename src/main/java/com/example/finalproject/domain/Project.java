@@ -19,6 +19,26 @@ public class Project {
     private String description;
     private Employee projectManager;
 
+    public Project() {
+    }
+
+    public Project(int id, String nameProject, String link, String language, String workplace, int teamSize, int projectCost, String projectResources, String os, String framework, Date startDate, Date endDate, String description, Employee projectManager) {
+        this.id = id;
+        this.nameProject = nameProject;
+        this.link = link;
+        this.language = language;
+        this.workplace = workplace;
+        this.teamSize = teamSize;
+        this.projectCost = projectCost;
+        this.projectResources = projectResources;
+        this.os = os;
+        this.framework = framework;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.description = description;
+        this.projectManager = projectManager;
+    }
+
     public int getId() {
         return id;
     }

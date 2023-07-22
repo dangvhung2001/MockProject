@@ -17,6 +17,25 @@ public class Experience {
     private String framework;
     private Employee employee; // Many-to-One relationship with Employee
 
+    public Experience() {
+    }
+
+    public Experience(int id, Date timeStart, Date timeEnd, String language, String link, String workplace, String position, String technologiesUsed, int teamSize, String description, String os, String framework, Employee employee) {
+        this.id = id;
+        this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
+        this.language = language;
+        this.link = link;
+        this.workplace = workplace;
+        this.position = position;
+        this.technologiesUsed = technologiesUsed;
+        this.teamSize = teamSize;
+        this.description = description;
+        this.os = os;
+        this.framework = framework;
+        this.employee = employee;
+    }
+
     public int getId() {
         return id;
     }

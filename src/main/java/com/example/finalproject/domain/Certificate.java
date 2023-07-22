@@ -11,6 +11,19 @@ public class Certificate {
     private Employee employee;
     private String certificationOfficer;
 
+    public Certificate() {
+    }
+
+    public Certificate(int id, String nameCertificate, Date issueDate, Date expirationDate, String description, Employee employee, String certificationOfficer) {
+        this.id = id;
+        this.nameCertificate = nameCertificate;
+        this.issueDate = issueDate;
+        this.expirationDate = expirationDate;
+        this.description = description;
+        this.employee = employee;
+        this.certificationOfficer = certificationOfficer;
+    }
+
     public int getId() {
         return id;
     }
