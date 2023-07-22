@@ -1,6 +1,7 @@
 package com.example.finalproject.service.dto;
 
 import java.sql.Date;
+import java.util.Set;
 
 public class EmployeeDTO {
     private int id;
@@ -26,6 +27,24 @@ public class EmployeeDTO {
     private String educationLevel;
     private EmployeeDTO manager;
     private DepartmentDTO department;
+    private String departmentName;
+    private Set<String> roles;
+
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
 
     public int getId() {
         return id;
