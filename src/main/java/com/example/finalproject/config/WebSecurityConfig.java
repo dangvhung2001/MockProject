@@ -13,35 +13,34 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
 //    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/employees/homePage").authenticated()
-                .antMatchers("/departments/**").hasRole("ADMIN")
-                .antMatchers("/employees/index").permitAll()
-                .and()
-                .formLogin((form) -> form
-                                .loginPage("/login")
-                                .usernameParameter("email")
-                                .passwordParameter("password")
-                                .defaultSuccessUrl("/employees/index")
-                                .permitAll()
-                )
-                .logout((logout) -> logout.permitAll())
-                .exceptionHandling()
-                .accessDeniedPage("/403");
-    }
+//
+////    @Override
+////    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+////        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+////    }
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/employees/homePage").authenticated()
+//                .antMatchers("/departments/**").hasRole("ADMIN")
+//                .antMatchers("/employees/index").permitAll()
+//                .and()
+//                .formLogin((form) -> form
+//                                .loginPage("/login")
+//                                .usernameParameter("email")
+//                                .passwordParameter("password")
+//                                .defaultSuccessUrl("/employees/index")
+//                                .permitAll()
+//                )
+//                .logout((logout) -> logout.permitAll())
+//                .exceptionHandling()
+//                .accessDeniedPage("/403");
+//    }
 }
 
