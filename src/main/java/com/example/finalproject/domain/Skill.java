@@ -9,6 +9,19 @@ public class Skill {
     private String description;
     private Employee employee;
 
+    public Skill() {
+    }
+
+    public Skill(int id, String name, int level, int yearExperience, int monthExperience, String description, Employee employee) {
+        this.id = id;
+        this.name = name;
+        this.level = level;
+        this.yearExperience = yearExperience;
+        this.monthExperience = monthExperience;
+        this.description = description;
+        this.employee = employee;
+    }
+
     public int getId() {
         return id;
     }
