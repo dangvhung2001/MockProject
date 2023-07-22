@@ -10,6 +10,18 @@ public class Department {
     private Date issueDate;
     private Department parentId;
 
+    public Department() {
+    }
+
+    public Department(int id, String name, String departmentCode, String description, Date issueDate, Department parentId) {
+        this.id = id;
+        this.name = name;
+        this.departmentCode = departmentCode;
+        this.description = description;
+        this.issueDate = issueDate;
+        this.parentId = parentId;
+    }
+
     public void setParentId(Department parentId) {
         this.parentId = parentId;
     }
