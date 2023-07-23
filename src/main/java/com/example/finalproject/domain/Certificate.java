@@ -3,7 +3,7 @@ package com.example.finalproject.domain;
 import java.sql.Date;
 
 public class Certificate {
-    private int id;
+    private Long id;
     private String nameCertificate;
     private Date issueDate;
     private Date expirationDate;
@@ -14,21 +14,11 @@ public class Certificate {
     public Certificate() {
     }
 
-    public Certificate(int id, String nameCertificate, Date issueDate, Date expirationDate, String description, Employee employee, String certificationOfficer) {
-        this.id = id;
-        this.nameCertificate = nameCertificate;
-        this.issueDate = issueDate;
-        this.expirationDate = expirationDate;
-        this.description = description;
-        this.employee = employee;
-        this.certificationOfficer = certificationOfficer;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

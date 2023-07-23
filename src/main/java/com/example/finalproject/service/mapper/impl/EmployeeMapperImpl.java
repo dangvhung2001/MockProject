@@ -41,7 +41,7 @@ public class EmployeeMapperImpl implements EmployeeMapper {
         employee.setSalary(dto.getSalary());
         employee.setPosition(dto.getPosition());
         employee.setEducationLevel(dto.getEducationLevel());
-        return null;
+        return employee;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class EmployeeMapperImpl implements EmployeeMapper {
         if (roles != null) {
             employeeDTO.setRoles(roles.stream().map(Role::getRoleName).collect(Collectors.toSet()));
         }
-        return null;
+        return employeeDTO;
     }
 
     @Override
