@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <!-- or -->
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,7 +23,7 @@
 
 <body onload="time()" class="app sidebar-mini rtl">
   <!-- Navbar-->
-  <header class="app-header">
+  <header class="app-header" th:fragment="navba">
     <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
       aria-label="Hide Sidebar"></a>
     <!-- Navbar Right Menu-->
@@ -51,24 +52,24 @@
           <span class="app-menu__label">POS Bán Hàng</span></a></li>
       <li><a class="app-menu__item " href="index.html"><i class='app-menu__icon bx bx-tachometer'></i><span
             class="app-menu__label">Bảng điều khiển</span></a></li>
-      <li><a class="app-menu__item " href="table-data-table.html"><i class='app-menu__icon bx bx-id-card'></i>
+      <li><a class="app-menu__item " href="table_data_table.html"><i class='app-menu__icon bx bx-id-card'></i>
           <span class="app-menu__label">Quản lý nhân viên</span></a></li>
       <li><a class="app-menu__item" href="#"><i class='app-menu__icon bx bx-user-voice'></i><span
             class="app-menu__label">Quản lý khách hàng</span></a></li>
-      <li><a class="app-menu__item" href="table-data-product.html"><i
+      <li><a class="app-menu__item" href="table_data_product.html"><i
             class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Quản lý sản phẩm</span></a>
       </li>
-      <li><a class="app-menu__item" href="table-data-oder.html"><i class='app-menu__icon bx bx-task'></i><span
+      <li><a class="app-menu__item" href="table_data_oder.html"><i class='app-menu__icon bx bx-task'></i><span
             class="app-menu__label">Quản lý đơn hàng</span></a></li>
-      <li><a class="app-menu__item" href="table-data-banned.html"><i class='app-menu__icon bx bx-run'></i><span
+      <li><a class="app-menu__item  active" href="table_data_banned.html"><i class='app-menu__icon bx bx-run'></i><span
             class="app-menu__label">Quản lý nội bộ
           </span></a></li>
-      <li><a class="app-menu__item  active" href="table-data-money.html"><i class='app-menu__icon bx bx-dollar'></i><span
-            class="app-menu__label ">Bảng kê lương</span></a></li>
-      <li><a class="app-menu__item" href="quan-ly-bao-cao.html"><i
+      <li><a class="app-menu__item" href="table_data_money.html"><i class='app-menu__icon bx bx-dollar'></i><span
+            class="app-menu__label">Bảng kê lương</span></a></li>
+      <li><a class="app-menu__item" href="quan_ly_bao_cao.html"><i
             class='app-menu__icon bx bx-pie-chart-alt-2'></i><span class="app-menu__label">Báo cáo doanh thu</span></a>
       </li>
-      <li><a class="app-menu__item" href="page-calendar.html"><i class='app-menu__icon bx bx-calendar-check'></i><span
+      <li><a class="app-menu__item" href="page_calendar.html"><i class='app-menu__icon bx bx-calendar-check'></i><span
             class="app-menu__label">Lịch công tác </span></a></li>
       <li><a class="app-menu__item" href="#"><i class='app-menu__icon bx bx-cog'></i><span class="app-menu__label">Cài
             đặt hệ thống</span></a></li>
@@ -77,37 +78,33 @@
     <main class="app-content">
       <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item">Bản kê lương</li>
-          <li class="breadcrumb-item"><a href="#">Thêm mới</a></li>
+          <li class="breadcrumb-item">Quản lý nội bộ</li>
+          <li class="breadcrumb-item"><a href="#">Tạo mới</a></li>
         </ul>
       </div>
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            <h3 class="tile-title">Tạo mới bảng kê lương</h3>
+            <h3 class="tile-title">Tạo mới danh sách nội bộ</h3>
             <div class="tile-body">
               <div class="row element-button">
                 <div class="col-sm-2">
                   <a class="btn btn-add btn-sm" data-toggle="modal" data-target="#exampleModalCenter"><b><i
-                        class="fas fa-folder-plus"></i> Tạo trạng thái mới</b></a>
+                        class="fas fa-folder-plus"></i> Tạo tình trạng mới</b></a>
                 </div>
   
               </div>
               <form class="row">
-                <div class="form-group col-md-3">
-                  <label class="control-label">Tên nhân viên</label>
-                  <input class="form-control" type="text" placeholder="nhập họ tên nhân viên">
+                <div class="form-group col-md-4">
+                  <label class="control-label">Họ và tên</label>
+                  <input class="form-control" type="text">
                 </div>
-                <div class="form-group col-md-3">
-                  <label for="exampleSelect1" class="control-label">Giới tính</label>
-                  <select class="form-control" id="exampleSelect1">
-                    <option>-- Chọn giới tính --</option>
-                    <option>Nam</option>
-                    <option>Nữ</option>
-                  </select>
+                <div class="form-group col-md-4">
+                  <label class="control-label">Ngày sinh</label>
+                  <input class="form-control" type="date">
                 </div>
-                <div class="form-group col-md-3">
-                        <label for="exampleSelect1" class="control-label"> Chức vụ</label>
+                <div class="form-group col-md-4">
+                        <label for="exampleSelect1" class="control-label">Chức vụ</label>
                         <select class="form-control" id="exampleSelect1">
                           <option>-- Chọn chức vụ --</option>
                           <option>Bán hàng</option>
@@ -121,40 +118,28 @@
                           <option>Tạp vụ</option>
                         </select>
                       </div>
-                      <div class="form-group col-md-3">
-                            <label class="control-label">Tiền lương</label>
-                            <input class="form-control" type="text" >
+                      <div class="form-group col-md-4">
+                            <label class="control-label">Nhập lý do</label>
+                            <textarea class="form-control" rows="4"></textarea>
                           </div>
-                      <div class="form-group col-md-3">
-                            <label class="control-label">Trừ lương</label>
-                            <input class="form-control" type="text" >
-                          </div>
-                      <div class="form-group col-md-3">
-                            <label class="control-label">Tiền thưởng</label>
-                            <input class="form-control" type="text" >
-                          </div>
-                      <div class="form-group col-md-3">
-                            <label class="control-label">Tổng nhận</label>
-                            <input class="form-control" type="text" >
-                          </div>
-                  <div class="form-group col-md-3">
-                      <label for="exampleSelect1" class="control-label">Trạng thái</label>
+                  <div class="form-group col-md-4">
+                      <label for="exampleSelect1" class="control-label">Tình trạng</label>
                       <select class="form-control" id="exampleSelect1">
-                        <option>-- Chọn trạng thái --</option>
-                        <option>Đã nhận tiền</option>
-                        <option>Chưa nhận tiền</option>
+                        <option>-- Chọn tình trạng --</option>
+                        <option>Sa thải</option>
+                        <option>Khóa tài khoản</option>
                       </select>
                     </div>
                   
-           
+            <div class="tile-footer">
+            </div>
           </div>
           <button class="btn btn-save" type="button">Lưu lại</button>
-          <a class="btn btn-cancel" href="/doc/table-data-oder.html">Hủy bỏ</a>
+          <a class="btn btn-cancel" href="/doc/table-data-banned.html">Hủy bỏ</a>
         </div>
     </main>
 
-
-  <!--
+ <!--
   MODAL
 -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -166,11 +151,11 @@ data-backdrop="static" data-keyboard="false">
       <div class="row">
         <div class="form-group  col-md-12">
           <span class="thong-tin-thanh-toan">
-            <h5>Tạo trạng thái mới</h5>
+            <h5>Tạo trình trạng mới</h5>
           </span>
         </div>
         <div class="form-group col-md-12">
-          <label class="control-label">Nhập tên trạng thái mới</label>
+          <label class="control-label">Nhập tình trạng</label>
           <input class="form-control" type="text" required>
         </div>
       </div>
@@ -188,15 +173,13 @@ data-backdrop="static" data-keyboard="false">
 MODAL
 -->
 
-
-
-  <!-- Essential javascripts for application to work-->
-  <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
-  <!-- The javascript plugin to display page loading on top-->
-  <script src="js/plugins/pace.min.js"></script>
+ <!-- Essential javascripts for application to work-->
+ <script src="js/jquery-3.2.1.min.js"></script>
+ <script src="js/popper.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script src="js/main.js"></script>
+ <!-- The javascript plugin to display page loading on top-->
+ <script src="js/plugins/pace.min.js"></script>
 
 </body>
 
