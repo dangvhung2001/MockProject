@@ -1,4 +1,4 @@
-package com.example.finalproject.service.dto.mapper;
+package com.example.finalproject.service.mapper;
 
 import java.util.List;
 

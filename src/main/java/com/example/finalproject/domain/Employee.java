@@ -4,7 +4,7 @@ import java.util.*;
 import java.sql.Date;
 
 public class Employee {
-    private int id;
+    private Long id;
     private String imgUrl;
     private String firstname;
     private String lastname;
@@ -32,7 +32,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String imgUrl, String firstname, String lastname, String password, Date createdAt, int sex, String maritalStatus, Date dateOfBirth, String citizenCode, Date issueDate, String placeOfIssue, String employeeCode, String email, String address, int phone, Date startDate, float salaryCoefficient, float salary, String position, String educationLevel, Employee manager, Department department, Set<Role> roles) {
+    public Employee(Long id, String imgUrl, String firstname, String lastname, String password, Date createdAt, int sex, String maritalStatus, Date dateOfBirth, String citizenCode, Date issueDate, String placeOfIssue, String employeeCode, String email, String address, int phone, Date startDate, float salaryCoefficient, float salary, String position, String educationLevel, Employee manager, Department department, Set<Role> roles) {
         this.id = id;
         this.imgUrl = imgUrl;
         this.firstname = firstname;
@@ -59,11 +59,11 @@ public class Employee {
         this.roles = roles;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
