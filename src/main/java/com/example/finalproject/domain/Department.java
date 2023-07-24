@@ -3,7 +3,7 @@ package com.example.finalproject.domain;
 import java.util.Date;
 
 public class Department {
-    private int id;
+    private Long id;
     private String name;
     private String departmentCode;
     private String description;
@@ -13,25 +13,21 @@ public class Department {
     public Department() {
     }
 
-    public Department(int id, String name, String departmentCode, String description, Date issueDate, Department parentId) {
-        this.id = id;
-        this.name = name;
-        this.departmentCode = departmentCode;
-        this.description = description;
-        this.issueDate = issueDate;
-        this.parentId = parentId;
-    }
 
     public void setParentId(Department parentId) {
         this.parentId = parentId;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Department getParentId() {
+        return parentId;
     }
 
     public String getName() {

@@ -1,7 +1,7 @@
 package com.example.finalproject.domain;
 
 public class Skill {
-    private int id;
+    private Long id;
     private String name;
     private int level;
     private int yearExperience;
@@ -12,21 +12,11 @@ public class Skill {
     public Skill() {
     }
 
-    public Skill(int id, String name, int level, int yearExperience, int monthExperience, String description, Employee employee) {
-        this.id = id;
-        this.name = name;
-        this.level = level;
-        this.yearExperience = yearExperience;
-        this.monthExperience = monthExperience;
-        this.description = description;
-        this.employee = employee;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

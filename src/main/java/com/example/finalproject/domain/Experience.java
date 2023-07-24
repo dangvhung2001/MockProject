@@ -3,7 +3,7 @@ package com.example.finalproject.domain;
 import java.sql.Date;
 
 public class Experience {
-    private int id;
+    private Long id;
     private Date timeStart;
     private Date timeEnd;
     private String language;
@@ -20,27 +20,11 @@ public class Experience {
     public Experience() {
     }
 
-    public Experience(int id, Date timeStart, Date timeEnd, String language, String link, String workplace, String position, String technologiesUsed, int teamSize, String description, String os, String framework, Employee employee) {
-        this.id = id;
-        this.timeStart = timeStart;
-        this.timeEnd = timeEnd;
-        this.language = language;
-        this.link = link;
-        this.workplace = workplace;
-        this.position = position;
-        this.technologiesUsed = technologiesUsed;
-        this.teamSize = teamSize;
-        this.description = description;
-        this.os = os;
-        this.framework = framework;
-        this.employee = employee;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
