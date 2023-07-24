@@ -3,14 +3,15 @@ package com.example.finalproject.domain;
 import java.sql.Date;
 
 public class Experience {
-    private int id;
+    private Long id;
+
+    private String name_experience;
     private Date timeStart;
     private Date timeEnd;
     private String language;
     private String link;
     private String workplace;
     private String position;
-    private String technologiesUsed;
     private int teamSize;
     private String description;
     private String os;
@@ -20,7 +21,7 @@ public class Experience {
     public Experience() {
     }
 
-    public Experience(int id, Date timeStart, Date timeEnd, String language, String link, String workplace, String position, String technologiesUsed, int teamSize, String description, String os, String framework, Employee employee) {
+    public Experience(Long id, Date timeStart, Date timeEnd, String language, String link, String workplace, String position, String technologiesUsed, int teamSize, String description, String os, String framework, Employee employee,String name_experience) {
         this.id = id;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
@@ -28,7 +29,7 @@ public class Experience {
         this.link = link;
         this.workplace = workplace;
         this.position = position;
-        this.technologiesUsed = technologiesUsed;
+        this.name_experience = name_experience;
         this.teamSize = teamSize;
         this.description = description;
         this.os = os;
@@ -36,11 +37,19 @@ public class Experience {
         this.employee = employee;
     }
 
-    public int getId() {
+    public String getName_experience() {
+        return name_experience;
+    }
+
+    public void setName_experience(String name_experience) {
+        this.name_experience = name_experience;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -90,14 +99,6 @@ public class Experience {
 
     public void setPosition(String position) {
         this.position = position;
-    }
-
-    public String getTechnologiesUsed() {
-        return technologiesUsed;
-    }
-
-    public void setTechnologiesUsed(String technologiesUsed) {
-        this.technologiesUsed = technologiesUsed;
     }
 
     public int getTeamSize() {

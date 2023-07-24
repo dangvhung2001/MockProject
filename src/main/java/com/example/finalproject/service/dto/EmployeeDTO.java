@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.Set;
 
 public class EmployeeDTO {
-    private int id;
+    private Long id;
     private String imgUrl;
     private String firstname;
     private String lastname;
@@ -46,11 +46,11 @@ public class EmployeeDTO {
         this.departmentName = departmentName;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
