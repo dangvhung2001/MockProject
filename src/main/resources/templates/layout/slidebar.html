@@ -10,7 +10,7 @@
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-        <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="/images/hay.jpg" width="50px"
+        <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="" width="50px"
                                             alt="User Image">
             <div>
                 <p class="app-sidebar__user-name"><b>Võ Trường</b></p>
@@ -19,9 +19,9 @@
         </div>
         <hr>
         <ul class="app-menu">
-            <li><a class="app-menu__item haha" href="phan-mem-ban-hang.html"><i class='app-menu__icon bx bx-cart-alt'></i>
+            <li><a class="app-menu__item haha" th:href="@{/home}"><i class='app-menu__icon bx bx-cart-alt'></i>
                 <span class="app-menu__label">DashBoard</span></a></li>
-            <li><a class="app-menu__item " href="templates/doc/index.html"><i class='app-menu__icon bx bx-tachometer'></i><span
+            <li><a class="app-menu__item " th:href="@{/department/detail}"><i class='app-menu__icon bx bx-tachometer'></i><span
                     class="app-menu__label">Quản Lý Phòng Ban</span></a></li>
             <li><a class="app-menu__item " href="templates/doc/department_index.html"><i class='app-menu__icon bx bx-id-card'></i>
                 <span class="app-menu__label">Quản lý nhân viên</span></a></li>

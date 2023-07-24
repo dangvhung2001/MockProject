@@ -91,13 +91,6 @@ public class Employee {
     public Employee() {
     }
 
-    public Set<Project> getProjects() {
-        return projects;
-    }
-
-    public void setProjects(Set<Project> projects) {
-        this.projects = projects;
-    }
 
     public Long getId() {
         return id;
