@@ -95,7 +95,7 @@ public class EmployeeDTO {
         this.createdAt = createdAt;
     }
 
-    public int getSex() {
+    public Byte getSex() {
         return sex;
     }
 

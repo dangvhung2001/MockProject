@@ -9,7 +9,6 @@ import com.example.finalproject.service.dto.EmployeeDTO;
 import com.example.finalproject.service.mapper.EmployeeMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,7 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Page<EmployeeDTO> findAll(String textSearch, Pageable pageable) {
-        return employeeRepository.findAllByNameOrEmailContainingIgnoreCase(textSearch, textSearch, pageable).map(employeeMapper::toDto);
+        return employeeRepository.findAllByLastnameOrEmailContainingIgnoreCase(textSearch, textSearch, pageable).map(employeeMapper::toDto);
 
     }
 
@@ -71,7 +70,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Optional<EmployeeDTO> findByEmail(String email) {
-        return employeeRepository.findOneByEmailIgnoreCase(email).map(employeeMapper::toDto);
+//        return employeeRepository.findOneByEmailIgnoreCase(email).map(employeeMapper::toDto);
+        return null;
     }
 
     @Override
