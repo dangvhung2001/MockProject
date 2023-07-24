@@ -1,11 +1,9 @@
 package com.example.finalproject.service.dto;
 
-import javax.validation.constraints.NotEmpty;
 import java.sql.Date;
 
 public class ProjectDTO {
     private Long id;
-    @NotEmpty(message = "Tên project không được để trống")
     private String nameProject;
     private String link;
     private String language;

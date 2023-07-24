@@ -21,41 +21,47 @@ import java.util.Optional;
 @RequestMapping("/department")
 public class DepartmentController {
     private final DepartmentServiceImpl departmentServiceImpl;
-    public DepartmentController(DepartmentServiceImpl departmentServiceImpl) {
+
+    private final DepartmentRepository departmentRepository;
+    public DepartmentController(DepartmentServiceImpl departmentServiceImpl, DepartmentRepository departmentRepository) {
         this.departmentServiceImpl = departmentServiceImpl;
+        this.departmentRepository = departmentRepository;
     }
 
     @GetMapping("/detail")
     public String showDetail(Model model, @RequestParam(required = false) String textSearch,Pageable pageable) {
         Page<DepartmentDTO> departments = departmentServiceImpl.findAll(pageable);
-        model.addAttribute("department", departments);
-        return "department/index";
+        model.addAttribute("departments", departments);
+        return "doc/department_index";
     }
 
     @GetMapping("/create")
     public String showAdd(Model model, Pageable pageable) {
-        model.addAttribute("department", new Department());
-        return "department/create";
+        model.addAttribute("department", new DepartmentDTO());
+        List<Department> department = departmentRepository.findByParentIsNotNull();
+        model.addAttribute("department_parent", department);
+        return "doc/department_create";
     }
 
     @PostMapping("/add")
     public ModelAndView doAdd(@ModelAttribute("department") @Valid DepartmentDTO departmentDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()){
-            ModelAndView modelAndView = new ModelAndView("department/create");
+            ModelAndView modelAndView = new ModelAndView("doc/department_create");
             return modelAndView;
         }
         departmentServiceImpl.save(departmentDTO);
-        ModelAndView modelAndView = new ModelAndView("department/index");
+        ModelAndView modelAndView = new ModelAndView("redirect:/department/detail");
         modelAndView.addObject("department", departmentDTO);
         return modelAndView;
     }
 
     @GetMapping("/edit/{id}")
-    public String showEdit(@PathVariable Long id, Model model,Pageable pageable){
-        Optional<DepartmentDTO> department = departmentServiceImpl.findOne(id);
-        if (department!=null) {
+    public String showEdit(@PathVariable Long id, Model model, Pageable pageable){
+        Optional<DepartmentDTO> departmentOptional = departmentServiceImpl.findOne(id);
+        if (departmentOptional.isPresent()) {
+            DepartmentDTO department = departmentOptional.get();
             model.addAttribute("department", department);
-            return "department/edit";
+            return "doc/department_edit";
         } else {
             return "redirect:/department/detail";
         }
@@ -64,10 +70,16 @@ public class DepartmentController {
     @PostMapping("/edit/{id}")
     public String doEdit(@PathVariable Long id, @ModelAttribute("department") @Valid DepartmentDTO departmentDTO,BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "department/edit";
+            return "doc/department_edit";
         }
         departmentDTO.setId(id);
         departmentServiceImpl.save(departmentDTO);
+        return "redirect:/department/detail";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteDepartment(@PathVariable Long id) {
+        departmentServiceImpl.delete(id);
         return "redirect:/department/detail";
     }
 }

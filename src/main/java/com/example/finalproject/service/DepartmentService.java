@@ -19,4 +19,6 @@ public interface DepartmentService {
 
     List<DepartmentDTO> getAll();
 
+
+
 }
