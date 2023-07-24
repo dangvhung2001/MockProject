@@ -1,14 +1,31 @@
 package com.example.finalproject.domain;
 
+import javax.persistence.*;
 import java.sql.Date;
-
+@Entity
+@Table(name = "certificate")
 public class Certificate {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name_certificate", nullable = false, unique = true)
     private String nameCertificate;
+
+    @Column(name = "issue_date")
     private Date issueDate;
+
+    @Column(name = "expiration_date")
     private Date expirationDate;
+
+    @Column
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
     private Employee employee;
+
+    @Column(name = "certification_officer")
     private String certificationOfficer;
 
     public Certificate() {

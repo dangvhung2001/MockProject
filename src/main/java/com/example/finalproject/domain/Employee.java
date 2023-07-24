@@ -1,37 +1,105 @@
 package com.example.finalproject.domain;
 
+import javax.persistence.*;
 import java.util.*;
 import java.sql.Date;
-
+@Entity
+@Table(name = "employee")
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "img_url", length = 255)
     private String imgUrl;
+
+    @Column(name = "firstname", nullable = false, length = 255)
     private String firstname;
+
+    @Column(name = "lastname", nullable = false, length = 255)
     private String lastname;
+
+    @Column(nullable = false, length = 255)
     private String password;
+
+    @Column(name = "create_at")
     private Date createdAt;
-    private int sex;
+
+    @Column
+    private Byte sex;
+
+    @Column(name = "marital_status", length = 255)
     private String maritalStatus;
+
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
+
+    @Column(name = "citizen_code", length = 20)
     private String citizenCode;
+
+    @Column(name = "issue_date")
     private Date issueDate;
+
+    @Column(name = "place_of_issue", columnDefinition = "TEXT")
     private String placeOfIssue;
+
+    @Column(name = "employee_code", length = 20)
     private String employeeCode;
+
+    @Column(unique = true, length = 255)
     private String email;
+
+    @Column(columnDefinition = "TEXT")
     private String address;
-    private int phone;
+
+    @Column(length = 11)
+    private Integer phone;
+
+    @Column(name = "start_date")
     private Date startDate;
-    private float salaryCoefficient;
-    private float salary;
+
+    @Column(name = "salary_coefficient")
+    private Float salaryCoefficient;
+
+    @Column
+    private Float salary;
+
+    @Column(length = 255)
     private String position;
+
+    @Column(name = "education_level", length = 255)
     private String educationLevel;
+
+    @ManyToOne
+    @JoinColumn(name = "manager_id")
     private Employee manager;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
     private Department department;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "employee_role",
+            joinColumns = {@JoinColumn(name = "employee_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_name")})
     private Set<Role> roles = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "employee_project",
+            joinColumns = {@JoinColumn(name = "employee_id")},
+            inverseJoinColumns = {@JoinColumn(name = "project_id")})
+    private Set<Project> projects = new HashSet<>();
 
     public Employee() {
     }
 
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
+    }
 
     public Long getId() {
         return id;
@@ -89,12 +157,24 @@ public class Employee {
         this.createdAt = createdAt;
     }
 
-    public int getSex() {
+    public Byte getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(Byte sex) {
         this.sex = sex;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
+    }
+
+    public void setSalaryCoefficient(Float salaryCoefficient) {
+        this.salaryCoefficient = salaryCoefficient;
+    }
+
+    public void setSalary(Float salary) {
+        this.salary = salary;
     }
 
     public String getMaritalStatus() {
