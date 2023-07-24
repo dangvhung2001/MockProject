@@ -1,13 +1,8 @@
 package com.example.finalproject.Controller;
 
 import com.example.finalproject.domain.Experience;
-import com.example.finalproject.domain.Skill;
-import com.example.finalproject.repository.SkillRepository;
-import com.example.finalproject.service.ExperienceService;
-import com.example.finalproject.service.SkillService;
 import com.example.finalproject.service.dto.ExperienceDTO;
-import com.example.finalproject.service.dto.SkillDTO;
-import com.example.finalproject.service.impl.ExperienceImpll;
+import com.example.finalproject.service.impl.ExperienceServiceImpll;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -17,21 +12,20 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import javax.xml.ws.RequestWrapper;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("experience")
 public class ExperienceController {
-    private final ExperienceImpll experienceImpll;
+    private final ExperienceServiceImpll experienceServiceImpllImpll;
 
-    public ExperienceController(ExperienceImpll experienceImpll) {
-        this.experienceImpll = experienceImpll;
+    public ExperienceController(ExperienceServiceImpll experienceImpll) {
+        this.experienceServiceImpllImpll = experienceImpll;
     }
 
     @GetMapping("/detail")
     public String showDetail(Model model, @RequestParam(required = false) String textSearch, Pageable pageable) {
-        Page<ExperienceDTO> experienceDTOS = experienceImpll.findAll(pageable);
+        Page<ExperienceDTO> experienceDTOS = experienceServiceImpllImpll.findAll(pageable);
         model.addAttribute("experience",experienceDTOS);
         return "experience/index";
     }
@@ -48,7 +42,7 @@ public class ExperienceController {
             ModelAndView modelAndView = new ModelAndView("experience/create");
             return modelAndView;
         }
-        experienceImpll.save(experienceDTO);
+        experienceServiceImpllImpll.save(experienceDTO);
         ModelAndView modelAndView = new ModelAndView("experience/index");
         modelAndView.addObject("experience", experienceDTO);
         return modelAndView;
@@ -56,7 +50,7 @@ public class ExperienceController {
 
     @GetMapping("/edit/{id}")
     public String showEdit(@PathVariable Long id, Model model,Pageable pageable){
-        Optional<ExperienceDTO> experiences = experienceImpll.findOne(id);
+        Optional<ExperienceDTO> experiences = experienceServiceImpllImpll.findOne(id);
         if (experiences!=null) {
             model.addAttribute("experience", experiences);
             return "experiences/edit";
@@ -71,7 +65,7 @@ public class ExperienceController {
             return "experiences/edit";
         }
         experienceDTO.setId(id);
-        experienceImpll.save(experienceDTO);
+        experienceServiceImpllImpll.save(experienceDTO);
         return "redirect:/experience/detail";
     }
 }

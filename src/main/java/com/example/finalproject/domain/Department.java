@@ -19,7 +19,7 @@ public class Department {
     private String description;
 
     @Column(name = "issue_date")
-    private Date issueDate;
+    private java.sql.Date issueDate;
 
     @ManyToOne
     @JoinColumn(name = "parent_Id")
@@ -72,7 +72,7 @@ public class Department {
         return issueDate;
     }
 
-    public void setIssueDate(Date issueDate) {
+    public void setIssueDate(java.sql.Date issueDate) {
         this.issueDate = issueDate;
     }
 }

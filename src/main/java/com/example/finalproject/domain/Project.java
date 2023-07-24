@@ -154,5 +154,4 @@ public class Project {
     public void setDescription(String description) {
         this.description = description;
     }
-
 }

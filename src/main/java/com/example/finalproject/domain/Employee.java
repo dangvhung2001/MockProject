@@ -34,28 +34,26 @@ public class Employee {
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
-    @Column(name = "citizen_code", length = 20)
+
     private String citizenCode;
 
-    @Column(name = "issue_date")
     private Date issueDate;
 
-    @Column(name = "place_of_issue", columnDefinition = "TEXT")
+
     private String placeOfIssue;
 
-    @Column(name = "employee_code", length = 20)
+
     private String employeeCode;
 
-    @Column(unique = true, length = 255)
+
     private String email;
 
-    @Column(columnDefinition = "TEXT")
+
     private String address;
 
-    @Column(length = 11)
     private Integer phone;
 
-    @Column(name = "start_date")
+
     private Date startDate;
 
     @Column(name = "salary_coefficient")
