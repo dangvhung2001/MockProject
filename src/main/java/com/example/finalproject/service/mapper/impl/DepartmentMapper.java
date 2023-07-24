@@ -25,7 +25,7 @@ public class DepartmentMapper implements EntityMapper<DepartmentDTO, Department>
         if (dto.getParentDepartment() != null) {
             Department parentEntity = new Department();
             parentEntity.setId(dto.getParentDepartment().getId());
-            entity.setParentId(parentEntity);
+            entity.setParent(parentEntity);
         }
         return entity;
     }
@@ -41,7 +41,7 @@ public class DepartmentMapper implements EntityMapper<DepartmentDTO, Department>
         dto.setDepartmentCode(entity.getDepartmentCode());
         dto.setDescription(entity.getDescription());
         dto.setIssueDate((Date) entity.getIssueDate());
-        if (entity.getParentId() != null) {
+        if (entity.getParent() != null) {
             DepartmentDTO departmentDTO = new DepartmentDTO();
             departmentDTO.setId(dto.getParentDepartment().getId());
             dto.setParentDepartment(departmentDTO);

@@ -19,7 +19,7 @@ public class ExperienceMapper implements EntityMapper<ExperienceDTO, Experience>
         }
         Experience entity = new Experience();
         entity.setId(dto.getId());
-        entity.setName_experience(dto.getName_experience());
+        entity.setNameExperience(dto.getName_experience());
         entity.setTimeStart(dto.getTimeStart());
         entity.setTimeEnd(dto.getTimeEnd());
         entity.setLanguage(dto.getLanguage());
@@ -45,7 +45,7 @@ public class ExperienceMapper implements EntityMapper<ExperienceDTO, Experience>
         }
         ExperienceDTO dto = new ExperienceDTO();
         dto.setId(entity.getId());
-        dto.setName_experience(entity.getName_experience());
+        dto.setName_experience(entity.getNameExperience());
         dto.setTimeStart(entity.getTimeStart());
         dto.setTimeEnd(entity.getTimeEnd());
         dto.setLanguage(entity.getLanguage());

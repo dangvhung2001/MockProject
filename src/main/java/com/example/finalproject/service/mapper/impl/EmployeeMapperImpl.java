@@ -26,7 +26,7 @@ public class EmployeeMapperImpl implements EmployeeMapper {
         employee.setLastname(dto.getLastname());
         employee.setPassword(dto.getPassword());
         employee.setCreatedAt(dto.getCreatedAt());
-        employee.setSex(dto.getSex());
+        employee.setSex((byte) dto.getSex());
         employee.setMaritalStatus(dto.getMaritalStatus());
         employee.setDateOfBirth(dto.getDateOfBirth());
         employee.setCitizenCode(dto.getCitizenCode());

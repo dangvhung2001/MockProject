@@ -31,75 +31,67 @@ public class EmployController {
 
     @GetMapping("homePage")
     public String homePage() {
-        return "index";
+        return "doc/index";
     }
 
-    @GetMapping("/show")
-    public String index(@RequestParam(required = false) String textSearch, Pageable pageable, Model model) {
-        Page<EmployeeDTO> employees = employeeService.findAll(textSearch, pageable);
-        model.addAttribute("employees", employees);
-        return "employee/index";
-    }
+//    @GetMapping("/show")
+//    public String index(@RequestParam(required = false) String textSearch, Pageable pageable, Model model) {
+//        Page<EmployeeDTO> employees = employeeService.findAll(textSearch, pageable);
+//        model.addAttribute("employees", employees);
+//        return "employee/index";
+//    }
 
-    @GetMapping("/index")
-    public String index(Pageable pageable, Model model, Authentication authentication) {
-        String username = authentication.getName();
-        Page<EmployeeDTO> employees = employeeService.findAllEmployee(pageable);
-        model.addAttribute("employees", employees);
-        model.addAttribute("username", username);
-        return "employee/index";
-    }
 
     @GetMapping("/add")
     public String showAdd(Model model) {
         model.addAttribute("employee", new EmployeeDTO());
         List<Role> roles = roleRepository.findAll();
-        List<DepartmentDTO> departments = departmentService.getAll();
+//        List<DepartmentDTO> departments = departmentService.findAll();
         model.addAttribute("roles", roles);
-        model.addAttribute("departments", departments);
-        return "employee/add";
+//        model.addAttribute("departments", departments);
+        return "doc/form_add_nhan_vien";
     }
 
     @PostMapping("/add")
     public String doAdd(@ModelAttribute("employee") @Valid EmployeeDTO employeeDTO, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
-            return "employee/add";
+            return "doc/form_add_nhan_vien";
         }
         employeeService.save(employeeDTO);
-        return "redirect:/employees/index";
+        return "redirect:/doc/table_data_table";
     }
 
-    @GetMapping("/edit/{id}")
-    public String showEdit(@PathVariable Long id, Model model
-    ) {
-        Optional<EmployeeDTO> employee = employeeService.findOne(id);
-        if (employee.isPresent()) {
-            EmployeeDTO employeeDTO = employee.get();
-            List<DepartmentDTO> departments = departmentService.getAll();
-            List<Role> roles = roleRepository.findAll();
-            model.addAttribute("roles", roles);
-            model.addAttribute("employee", employeeDTO);
-            model.addAttribute("departments", departments);
-            return "employee/edit";
-        } else {
-            return "redirect:/employees/index";
-        }
-    }
-
-    @PostMapping("/edit/{id}")
-    public String doEdit(@PathVariable Long id, @ModelAttribute("employee") @Valid EmployeeDTO employeeDTO,
-                         BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "employee/edit";
-        }
-        employeeDTO.setId(id);
-        employeeService.save(employeeDTO);
-        return "redirect:/employees/index";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String doDelete(@PathVariable Long id) {
-        employeeService.delete(id);
-        return "redirect:/employees/";
-    }
+//    @GetMapping("/edit/{id}")
+//    public String showEdit(@PathVariable Long id, Model model
+//    ) {
+//        Optional<EmployeeDTO> employee = employeeService.findOne(id);
+//        if (employee.isPresent()) {
+//            EmployeeDTO employeeDTO = employee.get();
+////            List<DepartmentDTO> departments = departmentService.getAll();
+//            List<Role> roles = roleRepository.findAll();
+//            model.addAttribute("roles", roles);
+//            model.addAttribute("employee", employeeDTO);
+////            model.addAttribute("departments", departments);
+//            return "employee/edit";
+//        } else {
+//            return "redirect:/employees/index";
+//        }
+//    }
+//
+//    @PostMapping("/edit/{id}")
+//    public String doEdit(@PathVariable Long id, @ModelAttribute("employee") @Valid EmployeeDTO employeeDTO,
+//                         BindingResult bindingResult) {
+//        if (bindingResult.hasErrors()) {
+//            return "employee/edit";
+//        }
+//        employeeDTO.setId(id);
+//        employeeService.save(employeeDTO);
+//        return "redirect:/employees/index";
+//    }
+//
+//    @GetMapping("/delete/{id}")
+//    public String doDelete(@PathVariable Long id) {
+//        employeeService.delete(id);
+//        return "redirect:/employees/";
+//    }
 }

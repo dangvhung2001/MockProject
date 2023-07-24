@@ -10,7 +10,7 @@ public class EmployeeDTO {
     private String lastname;
     private String password;
     private Date createdAt;
-    private int sex;
+    private Byte sex;
     private String maritalStatus;
     private Date dateOfBirth;
     private String citizenCode;
@@ -29,6 +29,7 @@ public class EmployeeDTO {
     private DepartmentDTO department;
     private String departmentName;
     private Set<String> roles;
+    private Set<String> projects;
 
     public Set<String> getRoles() {
         return roles;
@@ -98,7 +99,7 @@ public class EmployeeDTO {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(Byte sex) {
         this.sex = sex;
     }
 
@@ -228,5 +229,13 @@ public class EmployeeDTO {
 
     public void setDepartment(DepartmentDTO department) {
         this.department = department;
+    }
+
+    public Set<String> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<String> projects) {
+        this.projects = projects;
     }
 }

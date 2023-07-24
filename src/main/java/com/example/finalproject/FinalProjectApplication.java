@@ -9,7 +9,7 @@ import java.io.*;
 @SpringBootApplication
 public class FinalProjectApplication {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         SpringApplication.run(FinalProjectApplication.class, args);
     }
 
