@@ -30,11 +30,6 @@ public class ExperienceMapper implements EntityMapper<ExperienceDTO, Experience>
         entity.setDescription(dto.getDescription());
         entity.setOs(dto.getOs());
         entity.setFramework(dto.getFramework());
-        if (dto.getEmployee() != null) {
-            Employee employee = new Employee();
-            employee.setId(dto.getEmployee().getId());
-            entity.setEmployee(employee);
-        }
         return entity;
     }
 
@@ -56,11 +51,6 @@ public class ExperienceMapper implements EntityMapper<ExperienceDTO, Experience>
         dto.setDescription(entity.getDescription());
         dto.setOs(entity.getOs());
         dto.setFramework(entity.getFramework());
-        if (entity.getEmployee() != null) {
-            ExperienceDTO experienceDTO = new ExperienceDTO();
-            experienceDTO.setId(entity.getEmployee().getId());
-            dto.setEmployee(experienceDTO.getEmployee());
-        }
         return dto;
     }
 

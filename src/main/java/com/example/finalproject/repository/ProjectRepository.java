@@ -1,4 +1,11 @@
 package com.example.finalproject.repository;
 
-public interface ProjectRepository {
+import com.example.finalproject.domain.Experience;
+import com.example.finalproject.domain.Project;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProjectRepository extends JpaRepository<Project, Long>, JpaSpecificationExecutor<Project> {
 }

@@ -1,9 +1,12 @@
 package com.example.finalproject.service.dto;
 
+import javax.validation.constraints.NotEmpty;
 import java.sql.Date;
 
 public class ExperienceDTO {
     private Long id;
+    @NotEmpty(message = "Tên kinh nghiệm không được để trống")
+
     private String name_experience;
     private Date timeStart;
     private Date timeEnd;
