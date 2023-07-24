@@ -1,5 +1,6 @@
 package com.example.finalproject.service;
 
+
 import com.example.finalproject.service.dto.DepartmentDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,4 +15,5 @@ public interface DepartmentService {
     Optional<DepartmentDTO> findOne(Long id);
 
     void delete(Long id);
+
 }

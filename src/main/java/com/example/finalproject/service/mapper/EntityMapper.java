@@ -2,13 +2,13 @@ package com.example.finalproject.service.mapper;
 
 import java.util.List;
 
-public interface EntityMapper <D, E> {
+
+public interface EntityMapper<D, E> {
     E toEntity(D dto);
 
-    D toDto(E Entity);
+    D toDto(E entity);
 
     List<E> toEntity(List<D> dtoList);
 
-    List<D> toDto(List<E> EntityList);
-
+    List<D> toDto(List<E> entityList);
 }
