@@ -20,58 +20,58 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/project")
 public class ProjectController {
-//    private final ProjectServiceImpl projectServiceImpl;
-//
-//    private final ProjectMapper projectMapper;
-//
-//    public ProjectController(ProjectServiceImpl projectServiceImpl, ProjectMapper projectMapper){
-//        this.projectMapper = projectMapper;
-//        this.projectServiceImpl = projectServiceImpl;
-//    }
-//
-//    @GetMapping("/detail")
-//    public String showDetail(Model model, @RequestParam(required = false) String textSearch, Pageable pageable) {
-//        Page<ProjectDTO> projectDTOS = projectServiceImpl.findAll(pageable);
-//        model.addAttribute("projectDTOS",projectDTOS);
-//        return "project/index";
-//    }
-//
-//    @GetMapping("/create")
-//    public String showAdd(Model model, Pageable pageable) {
-//        model.addAttribute("project", new Project());
-//        return "project/create";
-//    }
-//
-//    @PostMapping("/add")
-//    public ModelAndView doAdd(@ModelAttribute("project") @Valid ProjectDTO projectDTO, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()){
-//            ModelAndView modelAndView = new ModelAndView("project/create");
-//            return modelAndView;
-//        }
-//        projectServiceImpl.save(projectDTO);
-//        ModelAndView modelAndView = new ModelAndView("project/index");
-//        modelAndView.addObject("experience", projectDTO);
-//        return modelAndView;
-//    }
-//
-//    @GetMapping("/edit/{id}")
-//    public String showEdit(@PathVariable Long id, Model model,Pageable pageable){
-//        Optional<ProjectDTO> projects = projectServiceImpl.findOne(id);
-//        if (projects!=null) {
-//            model.addAttribute("projects", projects);
-//            return "project/edit";
-//        } else {
-//            return "redirect:/projects/detail";
-//        }
-//    }
-//
-//    @PostMapping("/edit/{id}")
-//    public String doEdit(@PathVariable Long id, @ModelAttribute("projects") @Valid ProjectDTO projectDTO,BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            return "project/edit";
-//        }
-//        projectDTO.setId(id);
-//        projectServiceImpl.save(projectDTO);
-//        return "redirect:/project/detail";
-//    }
+    private final ProjectServiceImpl projectServiceImpl;
+
+    private final ProjectMapper projectMapper;
+
+    public ProjectController(ProjectServiceImpl projectServiceImpl, ProjectMapper projectMapper){
+        this.projectMapper = projectMapper;
+        this.projectServiceImpl = projectServiceImpl;
+    }
+
+    @GetMapping("/detail")
+    public String showDetail(Model model, @RequestParam(required = false) String textSearch, Pageable pageable) {
+        Page<ProjectDTO> projectDTOS = projectServiceImpl.findAll(pageable);
+        model.addAttribute("projectDTOS",projectDTOS);
+        return "project/index";
+    }
+
+    @GetMapping("/create")
+    public String showAdd(Model model, Pageable pageable) {
+        model.addAttribute("project", new Project());
+        return "project/create";
+    }
+
+    @PostMapping("/add")
+    public ModelAndView doAdd(@ModelAttribute("project") @Valid ProjectDTO projectDTO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            ModelAndView modelAndView = new ModelAndView("project/create");
+            return modelAndView;
+        }
+        projectServiceImpl.save(projectDTO);
+        ModelAndView modelAndView = new ModelAndView("project/index");
+        modelAndView.addObject("experience", projectDTO);
+        return modelAndView;
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEdit(@PathVariable Long id, Model model,Pageable pageable){
+        Optional<ProjectDTO> projects = projectServiceImpl.findOne(id);
+        if (projects!=null) {
+            model.addAttribute("projects", projects);
+            return "project/edit";
+        } else {
+            return "redirect:/projects/detail";
+        }
+    }
+
+    @PostMapping("/edit/{id}")
+    public String doEdit(@PathVariable Long id, @ModelAttribute("projects") @Valid ProjectDTO projectDTO,BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "project/edit";
+        }
+        projectDTO.setId(id);
+        projectServiceImpl.save(projectDTO);
+        return "redirect:/project/detail";
+    }
 }
