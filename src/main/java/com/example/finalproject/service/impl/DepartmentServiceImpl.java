@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -40,5 +41,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public void delete(Long id) {
         departmentRepository.deleteById(id);
+    }
+
+    @Override
+    public List<DepartmentDTO> getAll() {
+        List<Department> departments = departmentRepository.findAll();
+        return departmentMapper.toDto(departments);
     }
 }
