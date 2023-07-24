@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-@Transactional
 public interface SkillRepository extends JpaRepository<Skill, Long> {
     Skill findSkillByEmployee (String employee);
 }

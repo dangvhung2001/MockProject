@@ -1,23 +1,52 @@
 package com.example.finalproject.domain;
 
-import java.util.*;
+import javax.persistence.*;
 import java.sql.Date;
-
+@Entity
+@Table(name = "project")
 public class Project {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name_project", unique = true)
     private String nameProject;
+
+    @Column(columnDefinition = "TEXT")
     private String link;
+
+    @Column(length = 255)
     private String language;
+
+    @Column(columnDefinition = "TEXT")
     private String workplace;
-    private int teamSize;
-    private int projectCost;
+
+    @Column(name = "team_size")
+    private Integer teamSize;
+
+    @Column(name = "project_cost")
+    private Integer projectCost;
+
+    @Column(name = "project_resources", columnDefinition = "TEXT")
     private String projectResources;
+
+    @Column(length = 255)
     private String os;
+
+    @Column(length = 255)
     private String framework;
+
+    @Column(name = "start_date")
     private Date startDate;
+
+    @Column(name = "end_date")
     private Date endDate;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
-    private Employee projectManager;
+
+    @Column(name = "pm_id", unique = true)
+    private int pmId;
 
     public Project() {
     }
@@ -126,11 +155,4 @@ public class Project {
         this.description = description;
     }
 
-    public Employee getProjectManager() {
-        return projectManager;
-    }
-
-    public void setProjectManager(Employee projectManager) {
-        this.projectManager = projectManager;
-    }
 }

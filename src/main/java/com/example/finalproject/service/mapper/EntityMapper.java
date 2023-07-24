@@ -2,6 +2,7 @@ package com.example.finalproject.service.mapper;
 
 import java.util.List;
 
+
 public interface EntityMapper<D, E> {
     E toEntity(D dto);
 

@@ -1,12 +1,31 @@
 package com.example.finalproject.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "skill")
 public class Skill {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
-    private int level;
-    private int yearExperience;
-    private int monthExperience;
+
+    @Column
+    private Integer level;
+
+    @Column(name = "year_experience")
+    private Integer yearExperience;
+
+    @Column(name = "month_experience")
+    private Integer monthExperience;
+
+    @Column
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
     public Skill() {
