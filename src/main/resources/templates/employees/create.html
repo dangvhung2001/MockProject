@@ -11,14 +11,12 @@
     <div class="app-title">
       <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item">Danh sách nhân viên</li>
-        <li class="breadcrumb-item"><a href="#">Thêm nhân viên</a></li>
+        <li class="breadcrumb-item"><a href="">Thêm nhân viên</a></li>
       </ul>
     </div>
     <div class="row">
       <div class="col-md-12">
-
         <div class="tile">
-
           <h3 class="tile-title">Tạo mới nhân viên</h3>
           <div class="tile-body">
             <div class="row element-button">
@@ -28,6 +26,10 @@
               </div>
             </div>
             <form class="row" method="post" th:object="${employee}" th:action="@{/employees/add}">
+              <div class="form-group col-md-4">
+                <label class="control-label">Mã nhân viên</label>
+                <input class="form-control" type="text" required th:field="*{employeeCode}">
+              </div>
               <div class="form-group col-md-4">
                 <label class="control-label">Họ nhân viên</label>
                 <input class="form-control" type="text" th:field="*{firstname}">
@@ -42,7 +44,7 @@
               </div>
               <div class="form-group col-md-4">
                 <label class="control-label">Password</label>
-                <input class="form-control" type="text" required th:field="*{password}">
+                <input class="form-control" type="password" required th:field="*{password}">
               </div>
               <div class="form-group col-md-4">
                 <label class="control-label">Địa chỉ thường trú</label>
