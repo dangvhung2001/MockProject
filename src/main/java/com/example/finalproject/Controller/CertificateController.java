@@ -22,7 +22,7 @@ public class CertificateController {
         this.certificateService = certificateService;
     }
 
-    @GetMapping
+    @GetMapping("/index")
     public String listCertificates(Model model, @PageableDefault(size = 10) Pageable pageable) {
         Page<CertificateDTO> certificates = certificateService.findAll(pageable);
         model.addAttribute("certificates", certificates);
