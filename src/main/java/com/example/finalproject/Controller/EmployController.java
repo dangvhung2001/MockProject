@@ -33,11 +33,11 @@ public class EmployController {
         return "doc/index";
     }
 
-    @GetMapping("/show")
+    @GetMapping("/index")
     public String index(@RequestParam(required = false) String textSearch, Pageable pageable, Model model) {
         Page<EmployeeDTO> employees = employeeService.findAll(textSearch, pageable);
         model.addAttribute("employees", employees);
-        return "employees/list";
+        return "employee/index";
     }
 
 
@@ -48,16 +48,16 @@ public class EmployController {
 //        List<DepartmentDTO> departments = departmentService.findAll();
         model.addAttribute("roles", roles);
 //        model.addAttribute("departments", departments);
-        return "employees/create";
+        return "employee/create";
     }
 
     @PostMapping("/add")
     public String doAdd(@ModelAttribute("employee") @Valid EmployeeDTO employeeDTO, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
-            return "employees/create";
+            return "employee/create";
         }
         employeeService.save(employeeDTO);
-        return "redirect:/employees/list";
+        return "redirect:/employee/list";
     }
 
     @GetMapping("/edit/{id}")
@@ -71,9 +71,9 @@ public class EmployController {
             model.addAttribute("roles", roles);
             model.addAttribute("employee", employeeDTO);
 //            model.addAttribute("departments", departments);
-            return "employees/edit";
+            return "employee/edit";
         } else {
-            return "redirect:/employees/list";
+            return "redirect:/employee/list";
         }
     }
 
@@ -85,12 +85,12 @@ public class EmployController {
         }
         employeeDTO.setId(id);
         employeeService.save(employeeDTO);
-        return "redirect:/employees/list";
+        return "redirect:/employee/list";
     }
 
     @GetMapping("/delete/{id}")
     public String doDelete(@PathVariable Long id) {
         employeeService.delete(id);
-        return "redirect:/employees/";
+        return "redirect:/employee/";
     }
 }

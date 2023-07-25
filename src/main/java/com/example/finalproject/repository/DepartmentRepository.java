@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DepartmentRepository extends JpaRepository<Department, Long>, JpaSpecificationExecutor<Department> {
+public interface    DepartmentRepository extends JpaRepository<Department, Long>, JpaSpecificationExecutor<Department> {
     List<Department> findByParentIsNotNull();
 }
