@@ -1,20 +1,21 @@
 package com.example.finalproject.service;
 
-import com.example.finalproject.service.dto.DepartmentDTO;
 import com.example.finalproject.service.dto.ExperienceDTO;
+import com.example.finalproject.service.dto.ProjectDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ExperienceService {    ExperienceDTO save(ExperienceDTO experienceDTO);
+public interface ProjectService {
+    ProjectDTO save(ProjectDTO projectDTO);
 
-    Page<ExperienceDTO> findAll(Pageable pageable);
+    Page<ProjectDTO> findAll(Pageable pageable);
 
-    Optional<ExperienceDTO> findOne(Long id);
+    Optional<ProjectDTO> findOne(Long id);
 
     void delete(Long id);
 
-    List<ExperienceDTO> getAll();
+    List<ProjectDTO> getAll();
 }
