@@ -1,69 +1,102 @@
 package com.example.finalproject.domain;
 
+import javax.persistence.*;
 import java.util.*;
 import java.sql.Date;
-
+@Entity
+@Table(name = "employee")
 public class Employee {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "img_url", length = 255)
     private String imgUrl;
+
+    @Column(name = "firstname", nullable = false, length = 255)
     private String firstname;
+
+    @Column(name = "lastname", nullable = false, length = 255)
     private String lastname;
+
+    @Column(nullable = false, length = 255)
     private String password;
+
+    @Column(name = "create_at")
     private Date createdAt;
-    private int sex;
+
+    @Column
+    private Byte sex;
+
+    @Column(name = "marital_status", length = 255)
     private String maritalStatus;
+
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
+
+
     private String citizenCode;
+
     private Date issueDate;
+
+
     private String placeOfIssue;
+
+
     private String employeeCode;
+
+
     private String email;
+
+
     private String address;
-    private int phone;
+
+    private Integer phone;
+
+
     private Date startDate;
-    private float salaryCoefficient;
-    private float salary;
+
+    @Column(name = "salary_coefficient")
+    private Float salaryCoefficient;
+
+    @Column
+    private Float salary;
+
+    @Column(length = 255)
     private String position;
+
+    @Column(name = "education_level", length = 255)
     private String educationLevel;
+
+    @ManyToOne
+    @JoinColumn(name = "manager_id")
     private Employee manager;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
     private Department department;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "employee_role",
+            joinColumns = {@JoinColumn(name = "employee_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_name")})
     private Set<Role> roles = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "employee_project",
+            joinColumns = {@JoinColumn(name = "employee_id")},
+            inverseJoinColumns = {@JoinColumn(name = "project_id")})
+    private Set<Project> projects = new HashSet<>();
 
     public Employee() {
     }
 
-    public Employee(int id, String imgUrl, String firstname, String lastname, String password, Date createdAt, int sex, String maritalStatus, Date dateOfBirth, String citizenCode, Date issueDate, String placeOfIssue, String employeeCode, String email, String address, int phone, Date startDate, float salaryCoefficient, float salary, String position, String educationLevel, Employee manager, Department department, Set<Role> roles) {
-        this.id = id;
-        this.imgUrl = imgUrl;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.password = password;
-        this.createdAt = createdAt;
-        this.sex = sex;
-        this.maritalStatus = maritalStatus;
-        this.dateOfBirth = dateOfBirth;
-        this.citizenCode = citizenCode;
-        this.issueDate = issueDate;
-        this.placeOfIssue = placeOfIssue;
-        this.employeeCode = employeeCode;
-        this.email = email;
-        this.address = address;
-        this.phone = phone;
-        this.startDate = startDate;
-        this.salaryCoefficient = salaryCoefficient;
-        this.salary = salary;
-        this.position = position;
-        this.educationLevel = educationLevel;
-        this.manager = manager;
-        this.department = department;
-        this.roles = roles;
-    }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -115,12 +148,24 @@ public class Employee {
         this.createdAt = createdAt;
     }
 
-    public int getSex() {
+    public Byte getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(Byte sex) {
         this.sex = sex;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
+    }
+
+    public void setSalaryCoefficient(Float salaryCoefficient) {
+        this.salaryCoefficient = salaryCoefficient;
+    }
+
+    public void setSalary(Float salary) {
+        this.salary = salary;
     }
 
     public String getMaritalStatus() {

@@ -1,7 +1,7 @@
 package com.example.finalproject.service.dto;
 
 public class SkillDTO {
-    private int id;
+    private Long id;
     private String name;
     private int level;
     private int yearExperience;
@@ -9,11 +9,11 @@ public class SkillDTO {
     private String description;
     private EmployeeDTO employee;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,47 +1,72 @@
 package com.example.finalproject.domain;
 
+import javax.persistence.*;
 import java.sql.Date;
-
+@Entity
+@Table(name = "experience")
 public class Experience {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name_experience", columnDefinition = "TEXT")
+    private String nameExperience;
+
+    @Column(name = "time_start")
     private Date timeStart;
+
+    @Column(name = "time_end")
     private Date timeEnd;
+
+    @Column(columnDefinition = "TEXT")
     private String language;
+
+    @Column(columnDefinition = "TEXT")
     private String link;
+
+    @Column(columnDefinition = "TEXT")
     private String workplace;
+
+    @Column(columnDefinition = "TEXT")
     private String position;
-    private String technologiesUsed;
-    private int teamSize;
+
+    @Column(name = "team_size")
+    private Integer teamSize;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
+
+    @Column(name = "os", length = 255)
     private String os;
+
+    @Column(name = "framework", length = 255)
     private String framework;
-    private Employee employee; // Many-to-One relationship with Employee
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
     public Experience() {
     }
 
-    public Experience(int id, Date timeStart, Date timeEnd, String language, String link, String workplace, String position, String technologiesUsed, int teamSize, String description, String os, String framework, Employee employee) {
-        this.id = id;
-        this.timeStart = timeStart;
-        this.timeEnd = timeEnd;
-        this.language = language;
-        this.link = link;
-        this.workplace = workplace;
-        this.position = position;
-        this.technologiesUsed = technologiesUsed;
-        this.teamSize = teamSize;
-        this.description = description;
-        this.os = os;
-        this.framework = framework;
-        this.employee = employee;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNameExperience() {
+        return nameExperience;
+    }
+
+    public void setNameExperience(String nameExperience) {
+        this.nameExperience = nameExperience;
+    }
+
+    public void setTeamSize(Integer teamSize) {
+        this.teamSize = teamSize;
     }
 
     public Date getTimeStart() {
@@ -90,14 +115,6 @@ public class Experience {
 
     public void setPosition(String position) {
         this.position = position;
-    }
-
-    public String getTechnologiesUsed() {
-        return technologiesUsed;
-    }
-
-    public void setTechnologiesUsed(String technologiesUsed) {
-        this.technologiesUsed = technologiesUsed;
     }
 
     public int getTeamSize() {

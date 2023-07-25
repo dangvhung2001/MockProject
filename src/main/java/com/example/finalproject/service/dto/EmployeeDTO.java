@@ -1,15 +1,16 @@
 package com.example.finalproject.service.dto;
 
 import java.sql.Date;
+import java.util.Set;
 
 public class EmployeeDTO {
-    private int id;
+    private Long id;
     private String imgUrl;
     private String firstname;
     private String lastname;
     private String password;
     private Date createdAt;
-    private int sex;
+    private Byte sex;
     private String maritalStatus;
     private Date dateOfBirth;
     private String citizenCode;
@@ -26,12 +27,31 @@ public class EmployeeDTO {
     private String educationLevel;
     private EmployeeDTO manager;
     private DepartmentDTO department;
+    private String departmentName;
+    private Set<String> roles;
+    private Set<String> projects;
 
-    public int getId() {
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -75,11 +95,11 @@ public class EmployeeDTO {
         this.createdAt = createdAt;
     }
 
-    public int getSex() {
+    public Byte getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(Byte sex) {
         this.sex = sex;
     }
 
@@ -209,5 +229,13 @@ public class EmployeeDTO {
 
     public void setDepartment(DepartmentDTO department) {
         this.department = department;
+    }
+
+    public Set<String> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<String> projects) {
+        this.projects = projects;
     }
 }

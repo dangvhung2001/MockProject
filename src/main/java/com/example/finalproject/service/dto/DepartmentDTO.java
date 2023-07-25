@@ -1,20 +1,23 @@
 package com.example.finalproject.service.dto;
 
+import javax.validation.constraints.NotEmpty;
 import java.sql.Date;
 
 public class DepartmentDTO {
-    private int id;
+    private Long id;
+
+    @NotEmpty(message = "Tên bộ phận không được để trống")
     private String name;
     private String departmentCode;
     private String description;
     private Date issueDate;
     private DepartmentDTO parentDepartment;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

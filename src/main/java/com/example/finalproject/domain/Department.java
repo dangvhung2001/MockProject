@@ -1,36 +1,46 @@
 package com.example.finalproject.domain;
 
+import javax.persistence.*;
 import java.util.Date;
-
+@Entity
+@Table(name = "department")
 public class Department {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(name = "department_code")
     private String departmentCode;
+
+    @Column
     private String description;
-    private Date issueDate;
-    private Department parentId;
+
+    @Column(name = "issue_date")
+    private java.sql.Date issueDate;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_Id")
+    private Department parent;
 
     public Department() {
     }
 
-    public Department(int id, String name, String departmentCode, String description, Date issueDate, Department parentId) {
-        this.id = id;
-        this.name = name;
-        this.departmentCode = departmentCode;
-        this.description = description;
-        this.issueDate = issueDate;
-        this.parentId = parentId;
+    public Department getParent() {
+        return parent;
     }
 
-    public void setParentId(Department parentId) {
-        this.parentId = parentId;
+    public void setParent(Department parent) {
+        this.parent = parent;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -62,7 +72,7 @@ public class Department {
         return issueDate;
     }
 
-    public void setIssueDate(Date issueDate) {
+    public void setIssueDate(java.sql.Date issueDate) {
         this.issueDate = issueDate;
     }
 }

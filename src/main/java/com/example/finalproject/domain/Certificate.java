@@ -1,34 +1,41 @@
 package com.example.finalproject.domain;
 
+import javax.persistence.*;
 import java.sql.Date;
-
+@Entity
+@Table(name = "certificate")
 public class Certificate {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name_certificate", nullable = false, unique = true)
     private String nameCertificate;
+
+    @Column(name = "issue_date")
     private Date issueDate;
+
+    @Column(name = "expiration_date")
     private Date expirationDate;
+
+    @Column
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
     private Employee employee;
+
+    @Column(name = "certification_officer")
     private String certificationOfficer;
 
     public Certificate() {
     }
 
-    public Certificate(int id, String nameCertificate, Date issueDate, Date expirationDate, String description, Employee employee, String certificationOfficer) {
-        this.id = id;
-        this.nameCertificate = nameCertificate;
-        this.issueDate = issueDate;
-        this.expirationDate = expirationDate;
-        this.description = description;
-        this.employee = employee;
-        this.certificationOfficer = certificationOfficer;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

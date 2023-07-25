@@ -1,27 +1,49 @@
 package com.example.finalproject.service.dto;
 
+import javax.validation.constraints.NotEmpty;
 import java.sql.Date;
 
 public class ExperienceDTO {
-    private int id;
+    private Long id;
+    @NotEmpty(message = "Tên kinh nghiệm không được để trống")
+
+    private String name_experience;
     private Date timeStart;
     private Date timeEnd;
     private String language;
     private String link;
     private String workplace;
     private String position;
-    private String technologiesUsed;
     private int teamSize;
     private String description;
     private String os;
     private String framework;
     private EmployeeDTO employee;
 
-    public int getId() {
+    public ExperienceDTO() {
+    }
+
+    public ExperienceDTO(Long id, String name_experience, Date timeStart, Date timeEnd, String language, String link, String workplace, String position, int teamSize, String description, String os, String framework, EmployeeDTO employee) {
+        this.id = id;
+        this.name_experience = name_experience;
+        this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
+        this.language = language;
+        this.link = link;
+        this.workplace = workplace;
+        this.position = position;
+        this.teamSize = teamSize;
+        this.description = description;
+        this.os = os;
+        this.framework = framework;
+        this.employee = employee;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -73,20 +95,20 @@ public class ExperienceDTO {
         this.position = position;
     }
 
-    public String getTechnologiesUsed() {
-        return technologiesUsed;
-    }
-
-    public void setTechnologiesUsed(String technologiesUsed) {
-        this.technologiesUsed = technologiesUsed;
-    }
-
     public int getTeamSize() {
         return teamSize;
     }
 
     public void setTeamSize(int teamSize) {
         this.teamSize = teamSize;
+    }
+
+    public String getName_experience() {
+        return name_experience;
+    }
+
+    public void setName_experience(String name_experience) {
+        this.name_experience = name_experience;
     }
 
     public String getDescription() {
