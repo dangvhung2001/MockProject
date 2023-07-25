@@ -154,4 +154,20 @@ public class Project {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void setTeamSize(Integer teamSize) {
+        this.teamSize = teamSize;
+    }
+
+    public void setProjectCost(Integer projectCost) {
+        this.projectCost = projectCost;
+    }
+
+    public int getPmId() {
+        return pmId;
+    }
+
+    public void setPmId(int pmId) {
+        this.pmId = pmId;
+    }
 }
