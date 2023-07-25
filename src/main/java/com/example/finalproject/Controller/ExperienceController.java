@@ -26,24 +26,24 @@ public class ExperienceController {
     @GetMapping("/detail")
     public String showDetail(Model model, @RequestParam(required = false) String textSearch, Pageable pageable) {
         Page<ExperienceDTO> experienceDTOS = experienceServiceImpllImpll.findAll(pageable);
-        model.addAttribute("experience",experienceDTOS);
-        return "experience/index";
+        model.addAttribute("experiences",experienceDTOS);
+        return "doc/experience_index";
     }
 
     @GetMapping("/create")
     public String showAdd(Model model, Pageable pageable) {
         model.addAttribute("experience", new Experience());
-        return "experience/create";
+        return "doc/experience_create";
     }
 
     @PostMapping("/add")
     public ModelAndView doAdd(@ModelAttribute("experience") @Valid ExperienceDTO experienceDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()){
-            ModelAndView modelAndView = new ModelAndView("experience/create");
+            ModelAndView modelAndView = new ModelAndView("doc/experience_create");
             return modelAndView;
         }
         experienceServiceImpllImpll.save(experienceDTO);
-        ModelAndView modelAndView = new ModelAndView("experience/index");
+        ModelAndView modelAndView = new ModelAndView("doc/experience_index");
         modelAndView.addObject("experience", experienceDTO);
         return modelAndView;
     }
@@ -53,7 +53,7 @@ public class ExperienceController {
         Optional<ExperienceDTO> experiences = experienceServiceImpllImpll.findOne(id);
         if (experiences!=null) {
             model.addAttribute("experience", experiences);
-            return "experiences/edit";
+            return "doc/experiences_edit";
         } else {
             return "redirect:/experiences/detail";
         }
